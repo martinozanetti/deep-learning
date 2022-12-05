@@ -1,2 +1,2 @@
-# Deep Learning repo - Marino Zanetti
+# Deep Learning repo - Martino Zanetti
 A repository with all the excercises for the DL course (https://www.unimi.it/it/corsi/insegnamenti-dei-corsi-di-laurea/2023/deep-learning-con-applicazioni) - Master Degree in Physics, University of Milan.
