@@ -39,7 +39,7 @@ class MLP:
     # prediction. Use the sigmoid function as activation function for all
     # nodes in the network except for the output layer, which should be linear
     def __call__(self, x):
-
+        
         for i in range(len(self.weights)-1):
             x = tf.math.sigmoid(tf.add(tf.matmul(x, self.weights[i]), self.biases[i]))
             
@@ -48,14 +48,12 @@ class MLP:
         return x
     
 
-
 def main():
 
     myMPL = MLP(1, 5, 2, 1)
-    x = tf.linspace(-1.0, 1.0, 10)
+    x = tf.linspace([-1.0], [1.0], 10)
     y = myMPL.__call__(x)
 
-    print(x)
     print(y)
 
     # plot the result
