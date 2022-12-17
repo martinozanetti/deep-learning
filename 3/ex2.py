@@ -1,5 +1,5 @@
 
-# Translate the previous exercise with TensorFlow/Keras's sequential model.
+# Translate the previous exercise with TensorFlow to Keras's sequential model.
 # Print the model summary to screen.
 # Verify that predictions between both models are in agreement.
 # Print the weights from the model object.
@@ -38,17 +38,26 @@ print(model.get_weights())
 
 # Create random weights and biases of the same shape as the model (non va)
 
-weights = [tf.Variable(tf.random.normal([1, 1])),
-              tf.Variable(tf.random.normal([1, 5])),
-                tf.Variable(tf.random.normal([5, 2])),
-                tf.Variable(tf.random.normal([2, 1]))]
+weights = [tf.Variable([[1.1111]]), # <-- perchè tanto il primo non serve a niente.. giusto?
+           tf.Variable(tf.random.normal([1, 5])),
+           tf.Variable(tf.random.normal([5, 2])),
+           tf.Variable(tf.random.normal([2, 1]))]
 
-biases = [tf.Variable(tf.random.normal([1])),
-                tf.Variable(tf.random.normal([5])),
-                tf.Variable(tf.random.normal([2])),
-                tf.Variable(tf.random.normal([1]))]
+biases = [ tf.Variable([2.22222]), # <-- idem..?
+           tf.Variable(tf.random.normal([5])),
+           tf.Variable(tf.random.normal([2])),
+           tf.Variable(tf.random.normal([1]))]
 
-model.set_weights(weights + biases)
+print('\n\n Weights \n')
+print(weights)
+print('\n\n Biases \n')
+print(biases)
+
+for i in range(len(weights)):
+    model.layers[i].set_weights([weights[i], biases[i]])
+
+print(model.get_weights())
+
 
 # ==============================================
 # Verify model

@@ -47,6 +47,12 @@ class MLP:
         
         return x
     
+    def get_weights(self):
+        return self.weights
+    
+    def get_biases(self):
+        return self.biases
+    
 
 def main():
 
@@ -56,10 +62,10 @@ def main():
 
     print(y)
 
-    # plot the result
-    #plt.plot(x, y, 'o', label='MLP prediction')
-    #plt.legend()
-    #plt.show()
+    print('\n\n Weights \n')
+    print(myMPL.get_weights())
+    print('\n\n Biases \n')
+    print(myMPL.get_biases())
 
 if __name__ == "__main__":
     main()
