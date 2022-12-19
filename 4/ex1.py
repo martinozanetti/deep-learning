@@ -28,8 +28,7 @@ def main():
                   loss='mse')
 
     #Fit model
-#    history=model.fit(x_tr,y_tr, batch_size=len(x_tr), epochs=500,validation_data=(x_val, y_val))
-    history=model.fit(x_tr, y_tr, batch_size=len(x_tr), epochs=50, validation_data=(x_val, y_val))
+    history=model.fit(x_tr,y_tr, batch_size=len(x_tr), epochs=500,validation_data=(x_val, y_val))
 
     #Show improvement
     plt.figure()
@@ -60,8 +59,7 @@ def main():
                                 loss='mse')
 
     #Fit model
-#    history=NN_model.fit(x_tr,y_tr, batch_size=len(x_tr), epochs=500,validation_data=(x_val, y_val))
-    history=NN_model.fit(x_tr,y_tr, batch_size=len(x_tr), epochs=50,validation_data=(x_val, y_val))
+    history=NN_model.fit(x_tr,y_tr, batch_size=len(x_tr), epochs=500,validation_data=(x_val, y_val))
 
     #Show improvement
     plt.figure()
@@ -83,8 +81,6 @@ def main():
     plt.legend()
 
     plt.show()
-
-
 
 
 if __name__=='__main__':
