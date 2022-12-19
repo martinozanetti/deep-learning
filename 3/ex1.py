@@ -62,10 +62,11 @@ def main():
 
     print(y)
 
-    print('\n\n Weights \n')
-    print(myMPL.get_weights())
-    print('\n\n Biases \n')
-    print(myMPL.get_biases())
+    # print weights to compare with ex2.py
+    #print('\n\n Weights \n')
+    #print(myMPL.get_weights())
+    #print('\n\n Biases \n')
+    #print(myMPL.get_biases())
 
 if __name__ == "__main__":
     main()
