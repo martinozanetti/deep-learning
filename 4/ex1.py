@@ -42,8 +42,8 @@ def main():
     #Predict
     plt.figure()
     plt.title('Predictions vs dataset')
-    plt.scatter(x_tr, y_tr, label='Training data')
-    plt.scatter(x_val, y_val, label='Validation data')
+    plt.scatter(x_tr, y_tr, color="r", label='Training data')
+    plt.scatter(x_val, y_val, color="k", label='Validation data')
     plt.plot(x_tr, model(x_tr), label='Model prediction', color='red', linewidth=3)
     plt.xlabel('x')
     plt.ylabel('y')
@@ -72,9 +72,9 @@ def main():
 
     #Predict
     plt.figure()
-    plt.title('Predictions vs ataset')
-    plt.scatter(x_tr, y_tr, label='Training data')
-    plt.scatter(x_val, y_val, label='Validation data')
+    plt.title('Predictions vs dataset')
+    plt.scatter(x_tr, y_tr, color="r", label='Training data')
+    plt.scatter(x_val, y_val, color="k", label='Validation data')
     plt.plot(x_tr, NN_model(x_tr), label='Model predictions', color='red', linewidth=3)
     plt.xlabel('x')
     plt.ylabel('y')
