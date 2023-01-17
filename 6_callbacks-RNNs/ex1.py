@@ -4,10 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow import keras
 import os
-import hyperopt
-from hyperopt import hp, pyll
 import time
-from hyperopt import fmin, tpe, rand, STATUS_OK, Trials
 import sklearn.datasets
 import pandas as pd
 
