@@ -65,7 +65,6 @@ def main():
         plt.imshow(train_images[index], cmap=plt.cm.binary)
         plt.xlabel(my_dict[str(train_labels[index])])
 
-    plt.show()
 
     # Construct a custom Keras model (using the functional API, https://keras.io/guides/functional_api/)
     # (vedi slide lab, lez8) with the following components:
@@ -74,9 +73,53 @@ def main():
     # Use the categorical cross-entropy loss function for the classifier and the MSE
     # for the bounding box regressor.
 
-    # Plot the classification and bounding box losses. Verify the results on the
-    # validation dataset by plotting samples and computing the IoU. Evaluate the total
-    # number of good and bad bounding box predictions using an IoU threshold of 0.6
+    inputs = tf.keras.layers.Input(shape=(75, 75, 1))
+    c1 = tf.keras.layers.Conv2D(75, (3,3), activation='relu')(inputs)
+    c2 = tf.keras.layers.MaxPooling2D((3, 3))(c1)
+    c3 = tf.keras.layers.Flatten()(c2)
+    x = tf.keras.layers.Dense(64, activation='relu')(c3)
+
+    # output for classifier
+    o1 = tf.keras.layers.Dense(10, activation='softmax', name='classifier')(x)
+    # output for bbox regressor
+    o2 = tf.keras.layers.Dense(4, name='regressor')(x)
+
+    model = tf.keras.Model(inputs=inputs, outputs=[o1, o2])
+
+    # Compile the model with the appropriate loss functions and metrics.
+    model.compile(
+        optimizer='adam',
+        loss = {'classifier': 'categorical_crossentropy',
+              'regressor': 'mse'},
+        metrics = {'classifier': 'acc',
+                   'regressor': 'mse'}
+    )
+
+    model.summary()
+
+    history = model.fit(train_images, (train_labels, train_boxes), epochs=5, batch_size=64,
+                                       validation_data=(val_images, (val_labels, val_boxes)))
+    
+    model.save('saved-model')
+
+    # Plot the classification and bounding box losses.
+    plt.figure(figsize=(10,10))
+    plt.subplot(2,1,1)
+    plt.plot(history.history['classifier_loss'], label='classifier_loss')
+    plt.plot(history.history['val_classifier_loss'], label = 'val_classifier_loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend(loc='lower right')
+    plt.subplot(2,1,2)
+    plt.plot(history.history['regressor_loss'], label='regressor_loss')
+    plt.plot(history.history['val_regressor_loss'], label = 'val_regressor_loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend(loc='lower right')
+    
+
+    # Verify the results on the validation dataset by plotting samples and computing the IoU.
+    # Evaluate the total number of good and bad bounding box predictions using an IoU threshold of 0.6
 
     plt.show()
 
