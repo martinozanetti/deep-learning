@@ -25,8 +25,6 @@ def main():
     train_dir = pathlib.Path(path) / 'train'
     validation_dir = pathlib.Path(path) / 'validation'
 
-    
-
     # Construct a training and validation dataset using tf.keras.utils.image_dataset_from_directory,
     # 20% split, 32 batch sizes. Inspect the training dataset by plotting image samples.
     # Prefetch data following the same approach implemented in the previous exercise.
