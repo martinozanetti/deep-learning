@@ -69,7 +69,7 @@ def main():
 
     print()
 
-    # build the model without augmentation
+    # get the model
     if args[0] == "--model":
         if args[1] == "train-no-aug":
             model = build_and_train(training_data=training_data, valid_data=valid_data)
@@ -169,7 +169,7 @@ def build_and_train_aug(training_data, valid_data):
         ]
     )
 
-    # Plot samples of this layer.
+    # Plot samples of augmented data.
     plt.figure()
     for images, _ in training_data.take(1):
         for i in range(9):
